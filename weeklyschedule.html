@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Weekly Schedule</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Arial,Helvetica,sans-serif;background:#fafafa;padding:28px}
+  .card{max-width:1150px;margin:0 auto;background:#fff;padding:26px;border-radius:10px}
+  .header{display:flex;align-items:center;gap:18px;margin-bottom:18px}
+  .logo{width:110px;height:60px;border-radius:18px;background:linear-gradient(135deg,#ffdeda,#fff3b6,#d7f6fb)}
+  .title{font-family:Georgia,serif;font-size:42px;color:#214a3a}
+  .layout{display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:start}
+  .times{display:grid;gap:14px}
+  .time-empty{height:56px}
+  .time{height:56px;background:#dff7f9;border-radius:18px;display:flex;align-items:center;justify-content:center;color:#0b6b73;font-weight:700}
+  .days{display:grid;gap:14px}
+  .day-headers{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:6px}
+  .day{height:56px;border-radius:28px;background:#f6f6f6;display:flex;align-items:center;justify-content:center;font-weight:700;color:#2b3a33}
+  .pills{display:grid;grid-template-columns:repeat(5,1fr);grid-auto-rows:64px;gap:14px}
+  .pill{border-radius:28px;box-shadow:0 8px 18px rgba(10,10,10,0.04);display:flex;align-items:center;justify-content:center}
+  .p1{background:#ffd7ea}
+  .p2{background:#fff0b8}
+  .p3{background:#ffd7ea}
+  .p4{background:#fff0b8}
+  .p5{background:#ffd7ea}
+  .note{margin-top:18px;background:#dff7f9;padding:14px;border-radius:16px;font-weight:700;color:#0b6b73;width:140px;text-align:left}
+  @media(max-width:900px){.layout{grid-template-columns:92px 1fr}.title{font-size:34px}}
+  @media(max-width:600px){.layout{grid-template-columns:1fr}.times{order:2}.days{order:1}.note{width:100%}}
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <div class="logo"></div>
+      <div class="title">Weekly schedule</div>
+    </div>
+
+    <div class="layout">
+      <div class="times">
+        <div class="time-empty"></div>
+        <div class="time">08:00</div>
+        <div class="time">09:00</div>
+        <div class="time">10:00</div>
+        <div class="time">11:00</div>
+        <div class="time">12:00</div>
+        <div class="time">13:00</div>
+        <div class="time">14:00</div>
+        <div class="time">15:00</div>
+        <div class="time">16:00</div>
+        <div style="height:8px"></div>
+        <div style="display:flex;justify-content:flex-start"><div class="note">Note: Add relevant information here.</div></div>
+      </div>
+
+      <div class="days">
+        <div class="day-headers">
+          <div class="day">Monday</div>
+          <div class="day">Tuesday</div>
+          <div class="day">Wednesday</div>
+          <div class="day">Thursday</div>
+          <div class="day">Friday</div>
+        </div>
+
+        <div class="pills">
+          <div class="pill p1"></div><div class="pill p2"></div><div class="pill p3"></div><div class="pill p4"></div><div class="pill p5"></div>
+          <div class="pill p1"></div><div class="pill p2"></div><div class="pill p3"></div><div class="pill p4"></div><div class="pill p5"></div>
+          <div class="pill p1"></div><div class="pill p2"></div><div class="pill p3"></div><div class="pill p4"></div><div class="pill p5"></div>
+          <div class="pill p1"></div><div class="pill p2"></div><div class="pill p3"></div><div class="pill p4"></div><div class="pill p5"></div>
+          <div class="pill p1"></div><div class="pill p2"></div><div class="pill p3"></div><div class="pill p4"></div><div class="pill p5"></div>
+          <div class="pill p1"></div><div class="pill p2"></div><div class="pill p3"></div><div class="pill p4"></div><div class="pill p5"></div>
+          <div class="pill p1"></div><div class="pill p2"></div><div class="pill p3"></div><div class="pill p4"></div><div class="pill p5"></div>
+          <div class="pill p1"></div><div class="pill p2"></div><div class="pill p3"></div><div class="pill p4"></div><div class="pill p5"></div>
+          <div class="pill p1"></div><div class="pill p2"></div><div class="pill p3"></div><div class="pill p4"></div><div class="pill p5"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Masai Calculator</title>
+  <style>
+    :root{
+      --card-w: 320px;
+      --btn-size: 58px;
+      --gap: 14px;
+      --teal: #0f8a80;
+      --shadow: 0 10px 18px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.6);
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#fafafa;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      color:#222;
+    }
+
+    .page{
+      text-align:center;
+    }
+
+    h1{
+      color:var(--teal);
+      font-family: Georgia, "Times New Roman", serif;
+      margin-bottom: 24px;
+      font-size:36px;
+      letter-spacing:1px;
+    }
+
+    .card{
+      width:var(--card-w);
+      background:#fff;
+      padding:26px;
+      border-radius:6px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      margin:0 auto;
+    }
+
+    .display{
+      height:44px;
+      border-radius:8px;
+      border:1px solid #eee;
+      margin:0 auto var(--gap) auto;
+      width: calc(100% - 2px);
+      padding:8px 12px;
+      font-size:18px;
+      background:linear-gradient(#fff,#fbfbfb);
+      box-shadow: var(--shadow);
+    }
+
+    .pad{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--gap);
+      justify-items:center;
+      align-items:center;
+      padding-top:4px;
+    }
+
+    button{
+      width:100%;
+      height: var(--btn-size);
+      border-radius:8px;
+      border: none;
+      font-size:18px;
+      cursor: pointer;
+      box-shadow: 0 6px 10px rgba(0,0,0,0.06);
+      background:#fff;
+    }
+
+    .num{
+      background:linear-gradient(#fff,#f6f6f6);
+    }
+
+    .op{
+      background:#0b0b0b;
+      color:#fff;
+      font-weight:600;
+      box-shadow: none;
+    }
+
+    .clear{
+      background:#e02121;
+      color:#fff;
+      font-weight:700;
+      box-shadow: none;
+    }
+
+    .wide{
+      grid-column: span 2;
+    }
+
+    /* make cells look like small lifted tiles */
+    button:active{ transform: translateY(1px); }
+
+    @media (max-width:360px){
+      :root{ --card-w: 88%; --btn-size:50px; --gap:10px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1>Masai Calculator</h1>
+    <div class="card">
+      <div class="display" role="textbox" aria-label="calculator display"></div>
+
+      <div class="pad">
+        <button class="num">1</button>
+        <button class="num">2</button>
+        <button class="num">3</button>
+        <button class="op">+</button>
+
+        <button class="num">4</button>
+        <button class="num">5</button>
+        <button class="num">6</button>
+        <button class="op">-</button>
+
+        <button class="num">7</button>
+        <button class="num">8</button>
+        <button class="num">9</button>
+        <button class="op">×</button>
+
+        <button class="clear">C</button>
+        <button class="num">0</button>
+        <button class="op">=</button>
+        <button class="op">/</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
