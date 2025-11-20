@@ -1,0 +1,3 @@
+const getSquareCube = n => ({ square: n * n, cube: n * n * n });
+
+console.log(getSquareCube(5));  
