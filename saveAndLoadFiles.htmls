@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Q: 13 Save Notes</title>
+</head>
+<body>
+    <h1>User Notes</h1>
+    <textarea id="note-area" rows="10" cols="50" placeholder="Enter your notes here..."></textarea>
+    <br>
+    <button id="save-btn">Save Notes</button>
+    <button id="load-btn">Load Notes</button>
+    <button id="clear-btn">Clear Notes</button>
+    <p id="message-area" style="color: blue;"></p>
+
+    <script>
+        const STORAGE_KEY = 'userNotes';
+        const noteArea = document.getElementById('note-area');
+        const saveBtn = document.getElementById('save-btn');
+        const loadBtn = document.getElementById('load-btn');
+        const clearBtn = document.getElementById('clear-btn');
+        const messageArea = document.getElementById('message-area');
+
+        function displayMessage(message, color = 'blue') {
+            messageArea.textContent = message;
+            messageArea.style.color = color;
+            setTimeout(() => { messageArea.textContent = ''; }, 3000);
+        }
+
+        window.addEventListener('load', () => {
+            const savedNotes = localStorage.getItem(STORAGE_KEY);
+            if (savedNotes) {
+                noteArea.value = savedNotes;
+                displayMessage("Notes loaded automatically from localStorage.", 'green');
+            }
+        });
+
+        saveBtn.addEventListener('click', () => {
+            const notes = noteArea.value.trim();
+            if (notes === "") {
+                displayMessage("Cannot save empty notes.", 'red');
+                return;
+            }
+            localStorage.setItem(STORAGE_KEY, notes);
+            displayMessage("Notes saved successfully!", 'green');
+        });
+
+        loadBtn.addEventListener('click', () => {
+            const savedNotes = localStorage.getItem(STORAGE_KEY);
+            if (savedNotes) {
+                noteArea.value = savedNotes;
+                displayMessage("Notes loaded from localStorage.", 'green');
+            } else {
+                displayMessage("No saved notes found.", 'orange');
+            }
+        });
+
+        clearBtn.addEventListener('click', () => {
+            localStorage.removeItem(STORAGE_KEY);
+            noteArea.value = "";
+            displayMessage("Notes cleared from localStorage.", 'red');
+        });
+    </script>
+</body>
+</html>
