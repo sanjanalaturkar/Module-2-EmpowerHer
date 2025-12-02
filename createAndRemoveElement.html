@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Q: 12 Solution</title>
+</head>
+<body>
+    <button id="add-btn">Add Paragraph</button>
+    <button id="remove-btn">Remove Last Paragraph</button>
+    <div id="container"></div>
+
+    <script>
+        const container = document.getElementById('container');
+        const addBtn = document.getElementById('add-btn');
+        const removeBtn = document.getElementById('remove-btn');
+
+        addBtn.addEventListener('click', () => {
+            const newParagraph = document.createElement('p');
+            newParagraph.textContent = "This is a new paragraph.";
+            container.appendChild(newParagraph);
+        });
+
+        removeBtn.addEventListener('click', () => {
+            const paragraphs = container.children;
+            if (paragraphs.length > 0) {
+                const lastParagraph = paragraphs[paragraphs.length - 1];
+                container.removeChild(lastParagraph);
+            }
+        });
+    </script>
+</body>
+</html>
