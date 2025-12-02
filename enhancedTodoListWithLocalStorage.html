@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Q: 14 Enhanced Todo List</title>
+    <style>
+        .completed {
+            text-decoration: line-through;
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+    <h1>Enhanced Todo List</h1>
+
+    <input type="text" id="task-input" placeholder="Add new task">
+    <button id="add-task-btn">Add</button>
+
+    <br><br>
+    <input type="text" id="search-input" placeholder="Search tasks">
+    <br><br>
+    
+    <ul id="todo-list"></ul>
+
+    <script>
+        const STORAGE_KEY = 'todoTasks';
+        const taskInput = document.getElementById('task-input');
+        const addTaskBtn = document.getElementById('add-task-btn');
+        const searchInput = document.getElementById('search-input');
+        const todoList = document.getElementById('todo-list');
+
+        let tasks = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+
+        function saveTasks() {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+        }
+
+        function renderTasks(filterText = '') {
+            todoList.innerHTML = '';
+            
+            const filteredTasks = tasks.filter(task => 
+                task.text.toLowerCase().includes(filterText.toLowerCase())
+            );
+
+            filteredTasks.forEach(task => {
+                const li = document.createElement('li');
+                li.setAttribute('data-id', task.id);
+                li.textContent = task.text;
+
+                if (task.completed) {
+                    li.classList.add('completed');
+                }
+
+                const completeBtn = document.createElement('button');
+                completeBtn.textContent = task.completed ? 'Undo' : 'Complete';
+                completeBtn.style.marginLeft = '10px';
+                completeBtn.onclick = () => toggleCompletion(task.id);
+
+                const removeBtn = document.createElement('button');
+                removeBtn.textContent = 'Remove';
+                removeBtn.style.marginLeft = '5px';
+                removeBtn.onclick = () => removeTask(task.id);
+
+                li.appendChild(completeBtn);
+                li.appendChild(removeBtn);
+                todoList.appendChild(li);
+            });
+        }
+
+        function addTask() {
+            const text = taskInput.value.trim();
+            if (text === '') return;
+
+            const newTask = {
+                id: Date.now(),
+                text: text,
+                completed: false
+            };
+
+            tasks.push(newTask);
+            saveTasks();
+            renderTasks(searchInput.value);
+            taskInput.value = '';
+        }
+
+        function toggleCompletion(id) {
+            const taskIndex = tasks.findIndex(t => t.id === id);
+            if (taskIndex > -1) {
+                tasks[taskIndex].completed = !tasks[taskIndex].completed;
+                saveTasks();
+                renderTasks(searchInput.value);
+            }
+        }
+
+        function removeTask(id) {
+            tasks = tasks.filter(t => t.id !== id);
+            saveTasks();
+            renderTasks(searchInput.value);
+        }
+
+        addTaskBtn.addEventListener('click', addTask);
+        taskInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') addTask();
+        });
+
+        searchInput.addEventListener('input', () => {
+            renderTasks(searchInput.value);
+        });
+
+        window.onload = () => renderTasks();
+    </script>
+</body>
+</html>
